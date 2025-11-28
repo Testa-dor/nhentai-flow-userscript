@@ -1,3 +1,7 @@
+<p align="center"><b>Check out my other script:</b>
+<br><a href="https://github.com/Testa-dor/gelbooru-suite-userscript" style="color: #ed2553;"><b>Gelbooru Suite</b></a> for a better experience in Gelbooru
+</p>
+<hr>
 <h2 style="background-color:#670000; border:outset;">&nbsp;Key Features</h2>
 
 <h3 style="color: #ed2553;">⚡ Instant Preview & Discovery</h3>
@@ -54,6 +58,6 @@
 
 <center>
 <p align="center">Got questions or feedback? Drop a comment.
-<p align="center"><a href="https://discord.com/users/374316521960505354"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white" alt="Discord"></a> <a href="https://www.reddit.com/user/RepairNo8377/"><img src="https://img.shields.io/badge/Reddit-FF4500?logo=reddit&logoColor=white" alt="Reddit"></a>
+<p align="center"><a href="https://discord.com/users/374316521960505354"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white" alt="Discord"></a> <a href="https://www.reddit.com/user/RepairNo8377/"><img src="https://img.shields.io/badge/Reddit-FF4500?logo=reddit&logoColor=white" alt="Reddit"></a> <a href="https://www.codefactor.io/repository/github/testa-dor/nhentai-flow-userscript"><img src="https://www.codefactor.io/repository/github/testa-dor/nhentai-flow-userscript/badge" alt="CodeFactor" /></a>
 </p>
 <p align="center"><small style="color:#aaa;"><sup>Created by Testador · Refactored by Gemini. Licensed under the MIT License.</small></p>
