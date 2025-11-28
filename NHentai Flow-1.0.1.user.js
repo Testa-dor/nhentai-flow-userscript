@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NHentai Flow
 // @namespace    NEnhanced
-// @version      1.0
+// @version      1.0.1
 // @description  Several Quality of Life features: Quick Preview, Queue System, Smart Scroll, Tag Selector, and more.
 // @author       Testador
 // @match        https://nhentai.net/*
@@ -11,6 +11,8 @@
 // @connect      i.nhentai.net
 // @icon         https://external-content.duckduckgo.com/ip3/nhentai.net.ico
 // @license      MIT
+// @downloadURL https://update.sleazyfork.org/scripts/557178/NHentai%20Flow.user.js
+// @updateURL https://update.sleazyfork.org/scripts/557178/NHentai%20Flow.meta.js
 // ==/UserScript==
 
 (function() {
@@ -374,7 +376,7 @@
                 const coverUrl = gallery.querySelector('a.cover img').dataset.src || gallery.querySelector('a.cover img').src;
                 toggleQueueItem(id, meta.title, coverUrl, link.href);
             } else {
-                qBtn.innerHTML = '<i class="fa fa-circle-o-notch fa-spin"></i>';
+                qBtn.innerHTML = '<i class="fas fa-ellipsis-h"></i>';
                 getMeta(id).then(meta => {
                     const coverUrl = gallery.querySelector('a.cover img').dataset.src || gallery.querySelector('a.cover img').src;
                     toggleQueueItem(id, meta.title, coverUrl, link.href);
