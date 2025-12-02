@@ -9,9 +9,10 @@
 <ul>
     <li><strong>Hover Preview:</strong> Hover over any cover to instantly load pages. Use the integrated seek bar to jump through the book.</li>
     <li><strong>Rich Tags:</strong> View a complete, color-coded list of tags (with tiers like <em>Uncommon/Rare</em>) directly in the preview.</li>
+    <li><b>Saved Searches (New):</b> Create and manage presets for your favorite tags or complex queries directly in the search bar.</li>
+    <li><b>Contextual Random (New):</b> Roll a random gallery specifically from your current search results instead of the entire site.</li>
     <li><strong>Multi-Tag Selector:</strong> Activate "Tag Select" mode to click multiple tags and generate complex search queries instantly.</li>
     <li><strong>Smart Scroll:</strong> Automatically loads the next page when you scroll to the bottom.</li>
-<p><video src=https://files.catbox.moe/rxyoxc.mp4 width=80%></p>
 </ul>
 
 <h3 style="color: #ed2553;">📚 Built-in Reading Queue</h3>
@@ -23,8 +24,12 @@
 </ul>
 
 <h3 style="color: #ed2553;">📖 Immersive Reader</h3>
-<p>A fullscreen mode that hides the browser UI for maximum immersion.</p>
-<ul><p><video src=https://files.catbox.moe/7h7mdm.mp4 width=80%></p></ul>
+<p>A focused environment designed for immersion and utility.</p>
+<ul>
+    <li><b>Immersive Mode:</b> A fullscreen toggle (Hotkey: T) that hides the browser UI for maximum view area.</li>
+    <li><b>Random Favorite (New):</b> A new button in the reader toolbar to instantly open a random gallery from your favorites.</li>
+    <li><b>Seamless Navigation (New):</b> When reading, a "Next in Queue" button appears to jump instantly to the next book.</li>
+</ul>
 
 <h2 style="background-color:#670000; border:outset;">&nbsp;Shortcuts & Controls</h2>
 
