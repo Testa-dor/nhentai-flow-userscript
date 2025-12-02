@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NHentai Flow
 // @namespace    NEnhanced
-// @version      1.0.1
+// @version      1.2
 // @description  Several Quality of Life features: Quick Preview, Queue System, Smart Scroll, Tag Selector, and more.
 // @author       Testador
 // @match        https://nhentai.net/*
@@ -51,19 +51,19 @@
         .seek-bg { width: 100%; height: 3px; background: rgba(255,255,255,0.2); transition: height 0.1s; position: relative; backdrop-filter: blur(2px); }
         .seek-container:hover .seek-bg { height: 15px; background: rgba(255,255,255,0.3); }
         .seek-fill { height: 100%; background: #ed2553; width: 0%; transition: width 0.1s; }
-        .seek-tooltip { position: absolute; bottom: 17px; transform: translateX(-50%); background: #ed2553; color: #fff; font-size: 10px; padding: 2px 4px; border-radius: 3px; opacity: 0; pointer-events: none; white-space: nowrap; font-weight: bold; transition: opacity 0.1s; }
+        .seek-tooltip { position: absolute; bottom: 17px; transform: translateX(-50%); background: #ed2553; color: #fff; font-size: 10px; padding: 2px 4px; border-radius: .3em; opacity: 0; pointer-events: none; white-space: nowrap; font-weight: bold; transition: opacity 0.1s; }
         .seek-container:hover .seek-tooltip { opacity: 1; }
-        .tag-trigger, .queue-trigger { position: absolute; top: 5px; background: rgba(0,0,0,0.6); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px; cursor: pointer; z-index: 50; font-family: sans-serif; opacity: 0.7; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
+        .tag-trigger, .queue-trigger { position: absolute; top: 5px; background: rgba(0,0,0,0.6); color: #fff; font-size: 10px; padding: 2px 6px; border-radius: .3em; cursor: pointer; z-index: 50; font-family: sans-serif; opacity: 0.7; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; }
         .tag-trigger { left: 5px; cursor: help; }
         .queue-trigger { right: 5px; }
         .tag-trigger:hover, .queue-trigger:hover { opacity: 1; background: #ed2553; border-color: #ed2553; }
         .queue-trigger.in-queue { background: #ed2553; border-color: #ed2553; opacity: 1; }
 
-        .tag-popup { display: none; position: absolute; top: 25px; left: 5px; width: 215px; max-height: 250px; overflow-y: auto; background: rgba(15,15,15,0.95); color: #ddd; border: 1px solid #333; border-radius: 4px; padding: 8px; font-size: 11px; z-index: 60; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: left; line-height: 1.4; }
+        .tag-popup { display: none; position: absolute; top: 25px; left: 5px; width: 215px; max-height: 250px; overflow-y: auto; background: rgba(15,15,15,0.95); color: #ddd; border: 1px solid #333; border-radius: .3em; padding: 8px; font-size: 11px; z-index: 60; box-shadow: 0 4px 10px rgba(0,0,0,0.5); text-align: left; line-height: 1.4; }
         .tag-trigger:hover + .tag-popup, .tag-popup:hover { display: block; }
         .tag-category { color: #ed2553; font-weight: bold; margin-bottom: 2px; margin-top: 6px; font-size: 10px; text-transform: uppercase; }
         .tag-category:first-child { margin-top: 0; }
-        .tag-pill { display: inline-block; transition: all 0.2s; background: #333; padding: 1px 4px; margin: 1px; border-radius: 3px; color: #ccc; }
+        .tag-pill { display: inline-block; transition: all 0.2s; background: #333; padding: 1px 4px; margin: 1px; border-radius: .3em; color: #ccc; }
         .tag-pill.tier-mythic { border: 1px solid #b655f7; color: #d6a0fb; text-shadow: 0 0 5px rgba(168, 85, 247, 0.8); }
         .tag-pill.tier-rare { border: 1px solid #eab308; color: #fef08a; }
         .tag-pill.tier-uncommon { border: 1px solid #0740EB; }
@@ -79,20 +79,51 @@
         .smart-nav-bar { position: fixed; bottom: 0; left: 0; height: 5px; background: #ed2553; width: 0%; z-index: 9999; transition: width 0.1s linear; box-shadow: 0 -2px 10px rgba(237, 37, 83, 0.5); pointer-events: none; }
         body.is-gallery-page #content { padding-bottom: 200px !important; }
         @media (min-width: 900px) {
-            body.is-gallery-page .pagination { position: fixed !important; left: 8px !important; top: 50% !important; transform: translateY(-50%) !important; display: flex !important; flex-direction: column !important; }
+            body.is-gallery-page .pagination { position: fixed !important; left: 8px !important; top: 50% !important; transform: translateY(-50%) !important; display: flex !important; flex-direction: column !important; z-index: 4; }
             body.is-gallery-page a.first, body.is-gallery-page a.previous, body.is-gallery-page a.last, body.is-gallery-page a.next { transform: rotate(90deg); }
         }
 
         /* --- TAG SELECTOR & QUEUE BTN --- */
-        @media (min-width: 900px) { #info { width: 570px; } }
+        @media (min-width: 900px) { #info { width: 580px; } }
         .btn-tag-selector.is-active, .btn-queue-add.in-queue { background-color: #ed2553 !important; }
         .tag-container .tag.tag-selected .name { background: #ed2553 !important; opacity: 1 !important; }
         .tags-selecting-mode .tag:not(.tag-selected) { opacity: 0.6; }
 
         /* --- SEARCH SHORTCUT HINT --- */
-        .search-slash-hint { position: absolute; right: 50px; top: 50%; transform: translateY(-50%); color: #999; font-size: 12px; pointer-events: none; font-family: Consolas, monospace; transition: opacity 0.2s; }
+        .search-slash-hint { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #999; font-size: 12px; pointer-events: none; font-family: Consolas, monospace; }
         form.search input:focus ~ .search-slash-hint, form.search input:not(:placeholder-shown) ~ .search-slash-hint { opacity: 0; }
         form.search { position: relative; }
+
+        /* --- SAVED SEARCHES  --- */
+        .search-saved-trigger { position: absolute; right: 45px; top: 0; height: 100%; width: 35px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #888; transition: all 0.2s; z-index: 5; }
+        .search-saved-trigger:hover, .search-saved-trigger.is-active { color: #ed2553; }
+        .saved-search-extension { position: relative; display: none; width: 100%; background: #111; border-bottom: 2px solid #2a2a2a; padding: 15px 20px; box-sizing: border-box; box-shadow: 0 5px 15px rgba(0,0,0,0.5); animation: slideDown 0.2s ease-out; z-index: 5; }
+        .saved-search-extension.is-visible { display: block; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .sse-header { display: flex; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 8px; }
+        .sse-title { font-weight: bold; color: #eee; margin-right: 15px; }
+        .sse-actions { margin-left: auto; }
+        .btn-sse-save, .btn-sse-edit { background: #333; color: #ccc; border: 1px solid #444; padding: 4px 10px; border-radius: .3em; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+        .btn-sse-save:hover { background: #ed2553; color: #fff; border-color: #ed2553; }
+        .btn-sse-edit.is-active { background: #ed2553; color: #fff; border-color: #ed2553; animation: pulseRed 2s infinite; }
+        @keyframes pulseRed { 0% { box-shadow: 0 0 0 0 rgba(237, 37, 83, 0.4); } 70% { box-shadow: 0 0 0 6px rgba(237, 37, 83, 0); } 100% { box-shadow: 0 0 0 0 rgba(237, 37, 83, 0); } }
+
+        .sse-empty { color: #666; font-style: italic; font-size: 12px; }
+        .sse-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        .ss-pill { display: inline-flex; align-items: stretch; background: #1f1f1f; border: 1px solid #333; border-radius: .3em; overflow: hidden; font-size: 13px; transition: all 0.2s; }
+        .ss-pill:hover { border-color: #ed2553; }
+        .ss-pill.is-current { border-color: #ed2553; }
+        .ss-part { padding: 5px 8px; cursor: pointer; display: flex; align-items: center; transition: background 0.2s; }
+        .ss-add { background: #252525; border-right: 1px solid #333; color: #777; }
+        .ss-add:hover { background: #333; color: #fff; }
+        .ss-text:hover { background: #ed2553; }
+
+        .sse-list.delete-mode .ss-pill { border-color: #900c2a; opacity: 0.9; }
+        .sse-list.delete-mode .ss-add { pointer-events: none; opacity: 0.3; background: #000; }
+        .sse-list.delete-mode .ss-text { color: #ff6b81; cursor:  alias; }
+        .sse-list.delete-mode .ss-text:hover { background: #900c2a; color: #fff; text-decoration: line-through; }
 
         /* --- QUEUE DOCK --- */
         .queue-dock { position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; align-items: flex-end; }
@@ -100,7 +131,7 @@
         .queue-toggle-btn:hover { background: #ed2553; border-color: #ed2553; transform: scale(1.1); }
         .queue-count { position: absolute; top: -5px; right: -5px; background: #ed2553; color: #fff; font-size: 10px; font-weight: bold; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #1f1f1f; }
 
-        .queue-panel { display: none; width: 300px; background: #1f1f1f; border: 1px solid #333; border-radius: 8px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.6); animation: slideUp 0.2s ease-out; }
+        .queue-panel { display: none; width: 300px; background: #1f1f1f; border: 1px solid #333; border-radius: 5px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.6); animation: slideUp 0.2s ease-out; }
         .queue-panel.is-visible { display: block; }
         .queue-header { padding: 10px 15px; background: #222; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #eee; font-size: 13px; }
         .queue-clear { cursor: pointer; color: #888; font-size: 11px; transition: color 0.2s; }
@@ -108,7 +139,7 @@
         .queue-list { max-height: 350px; overflow-y: auto; padding: 0; margin: 0; list-style: none; }
         .queue-item { display: flex; padding: 8px; border-bottom: 1px solid #2a2a2a; transition: background 0.2s; position: relative; content-visibility: auto; contain-intrinsic-size: 75px; }
         .queue-item:hover { background: #2a2a2a; }
-        .queue-item img { width: 40px; height: 58px; object-fit: cover; border-radius: 3px; margin-right: 10px; }
+        .queue-item img { width: 40px; height: 58px; object-fit: cover; border-radius: .3em; margin-right: 10px; }
         .queue-info { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
         .queue-title { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; margin-bottom: 4px; }
         .queue-title:hover { color: #ed2553; }
@@ -292,7 +323,7 @@
             return '';
         };
         const getGenreStyle = (name) => {
-            if (['yaoi', 'males only', 'bara', 'yuri', 'females only', 'lesbian', 'futanari', 'tomgirl', 'otokonoko', 'dickgirl', 'shemale'].includes(name)) return 'style-lgbt';
+            if (['yaoi', 'males only', 'bara', 'yuri', 'females only', 'lesbian', 'futanari', 'tomgirl', 'otokonoko', 'dickgirl', 'shemale', 'bisexual'].includes(name)) return 'style-lgbt';
             return '';
         };
 
@@ -427,7 +458,7 @@
     }
 
     // ==========================================================================
-    // READER LOGIC (Fullscreen + Container Nav)
+    // READER LOGIC (Fullscreen + Container Nav + Next in Queue + Random Fav)
     // ==========================================================================
 
     function initReaderMode() {
@@ -457,29 +488,215 @@
             }
         });
 
-        if (document.querySelector('.btn-fullscreen-custom')) return;
         const toolbars = document.querySelectorAll('.reader-buttons-right');
         if (toolbars.length === 0) return;
         const toolbar = toolbars[toolbars.length - 1];
 
-        const btn = document.createElement('button');
-        btn.className = 'btn btn-unstyled btn-fullscreen-custom';
-        btn.innerHTML = '<i class="fa fa-expand"></i>';
-        btn.title = "Fullscreen (T)";
-        const toggleFS = () => {
-            if (!document.fullscreenElement) { imageContainer.requestFullscreen().catch(err => console.log(err)); }
-            else { document.exitFullscreen(); }
-        };
-        btn.onclick = toggleFS;
-        toolbar.insertBefore(btn, toolbar.firstChild);
 
-        document.addEventListener('keydown', (e) => {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            if (e.key === 't' || e.key === 'T') { e.preventDefault(); toggleFS(); }
+        // Fullscreen
+        if (!document.querySelector('.btn-fullscreen-custom')) {
+            const fsBtn = document.createElement('button');
+            fsBtn.className = 'btn btn-unstyled btn-fullscreen-custom';
+            fsBtn.innerHTML = '<i class="fa fa-expand"></i>';
+            fsBtn.title = "Fullscreen (T)";
+
+            const toggleFS = () => {
+                if (!document.fullscreenElement) {
+                    imageContainer.requestFullscreen().catch(err => console.log(err));
+                } else {
+                    document.exitFullscreen();
+                }
+            };
+            fsBtn.onclick = toggleFS;
+
+            toolbar.insertBefore(fsBtn, toolbar.firstChild);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                if (e.key === 't' || e.key === 'T') { e.preventDefault(); toggleFS(); }
+            });
+
+            document.addEventListener('fullscreenchange', () => {
+                if (!document.fullscreenElement) {
+                    fsBtn.innerHTML = '<i class="fa fa-expand"></i>';
+                    setTimeout(() => {
+                        imageContainer.scrollIntoView({ behavior: 'auto', block: 'start' });
+                    }, 50);
+                }
+            });
+        }
+
+        // Next Queue
+        const fsBtn = document.querySelector('.btn-fullscreen-custom');
+        const currentId = window.location.pathname.match(/\/g\/(\d+)/)?.[1];
+
+        if (currentId && readingQueue.length > 0) {
+            const currentIndex = readingQueue.findIndex(i => i.id == currentId);
+
+            if (currentIndex > -1 && currentIndex < readingQueue.length - 1) {
+                const nextItem = readingQueue[currentIndex + 1];
+
+                const nextQBtn = document.createElement('a');
+                nextQBtn.className = 'btn btn-unstyled btn-next-queue';
+                nextQBtn.innerHTML = `<span style="font-weight:bold;">Next Queue <i class="fa fa-step-forward"></i></span>`;
+                nextQBtn.href = `/g/${nextItem.id}/1/`;
+                nextQBtn.title = `Read Next: ${nextItem.title}`;
+                nextQBtn.style.marginLeft = '10px';
+
+                if (fsBtn && fsBtn.nextSibling) {
+                    toolbar.insertBefore(nextQBtn, fsBtn.nextSibling);
+                } else {
+                    toolbar.appendChild(nextQBtn);
+                }
+            }
+        }
+
+        // Random Favorite
+        const hasFavorites = !!document.querySelector('nav a[href*="/favorites/"]');
+
+        if (hasFavorites) {
+            const randFavBtn = document.createElement('a');
+            randFavBtn.className = 'btn btn-unstyled btn-random-fav';
+            randFavBtn.innerHTML = '<span><i class="fa fa-circle-notch fa-spin"></i></span>';
+            randFavBtn.style.marginRight = '10px';
+            randFavBtn.style.cursor = 'wait';
+            randFavBtn.style.opacity = '0.7';
+
+            toolbar.insertBefore(randFavBtn, toolbar.firstChild);
+
+            fetch('/favorites/random')
+                .then(response => {
+                    const finalUrl = response.url;
+                    if (finalUrl && finalUrl.includes('/g/')) {
+                        let cleanUrl = finalUrl.split('?')[0];
+                        if (!cleanUrl.endsWith('/')) cleanUrl += '/';
+
+                        const readerUrl = `${cleanUrl}1/`;
+
+                        randFavBtn.href = readerUrl;
+                        randFavBtn.innerHTML = '<span style="font-weight:bold;"></i> Random Fav <i class="fa fa-random"></i></span>';
+                        randFavBtn.title = "Read Random Favorite";
+                        randFavBtn.style.cursor = 'pointer';
+                        randFavBtn.style.opacity = '1';
+                    } else {
+                        randFavBtn.remove();
+                    }
+                })
+                .catch(err => {
+                    randFavBtn.remove();
+                });
+        }
+    }
+
+    // ==========================================================================
+    // RANDOM CONTEXTUAL (RANDOM IN SEARCH)
+    // ==========================================================================
+
+    function initRandomContextual() {
+        const sortContainer = document.querySelector('.sort');
+        if (!sortContainer || sortContainer.querySelector('.btn-random-ctx')) return;
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'sort-type';
+
+        const btn = document.createElement('a');
+        btn.className = 'btn-random-ctx';
+        const ORIGINAL_HTML = '<i class="fa fa-random"></i>';
+        btn.innerHTML = ORIGINAL_HTML;
+        btn.style.cursor = 'pointer';
+        btn.style.padding = '10px 12px';
+        btn.title = "Roll a random gallery from these search results";
+
+        const resetBtn = () => {
+            btn.innerHTML = ORIGINAL_HTML;
+            btn.style.pointerEvents = 'auto';
+            btn.style.opacity = '1';
+        };
+
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                resetBtn();
+            }
         });
-        document.addEventListener('fullscreenchange', () => {
-            if (!document.fullscreenElement) { btn.innerHTML = '<i class="fa fa-expand"></i>'; }
-        });
+
+        resetBtn();
+
+        btn.onclick = async (e) => {
+            e.preventDefault();
+
+            btn.innerHTML = '<i class="fa fa-circle-notch fa-spin"></i>';
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0.7';
+
+            try {
+                const lastPageBtn = document.querySelector('.pagination .last');
+                let totalPages = 1;
+
+                if (lastPageBtn) {
+                    const match = lastPageBtn.href.match(/page=(\d+)/);
+                    if (match) totalPages = parseInt(match[1], 10);
+                } else {
+                    const pages = document.querySelectorAll('.pagination .page');
+                    if (pages.length > 0) {
+                        const lastNum = pages[pages.length - 1].textContent;
+                        if (!isNaN(lastNum)) totalPages = parseInt(lastNum, 10);
+                    }
+                }
+                if (totalPages === 1) {
+                    const galleries = document.querySelectorAll('.gallery a.cover');
+                    if (galleries.length === 0) throw new Error("No galleries found");
+
+                    const randomGallery = galleries[Math.floor(Math.random() * galleries.length)];
+                    window.location.href = randomGallery.href;
+                    return;
+                }
+
+                const randomPage = Math.floor(Math.random() * totalPages) + 1;
+                const targetUrl = new URL(window.location.href);
+                targetUrl.searchParams.set('page', randomPage);
+
+                const response = await fetch(targetUrl.href);
+                const html = await response.text();
+
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const galleries = doc.querySelectorAll('.gallery a.cover');
+
+                if (galleries.length === 0) throw new Error("No galleries found");
+
+                const randomGallery = galleries[Math.floor(Math.random() * galleries.length)];
+
+                window.location.href = randomGallery.href;
+
+            } catch (err) {
+                btn.innerHTML = '<i class="fa fa-exclamation-triangle"></i>';
+                setTimeout(() => {
+                    resetBtn();
+                }, 2000);
+            }
+        };
+
+        btnContainer.appendChild(btn);
+        sortContainer.appendChild(btnContainer);
+    }
+
+    // ==========================================================================
+    // POPULAR SHORTCUT BUTTON
+    // ==========================================================================
+
+    function initPopularShortcut() {
+        const popularContainer = document.querySelector('.index-popular');
+        if (!popularContainer || popularContainer.querySelector('.btn-view-all-popular')) return;
+
+        const link = document.createElement('a');
+        link.href = '/search/?q=pages%3A%3E0&sort=popular-today';
+        link.className = 'btn btn-secondary btn-view-all-popular';
+
+        link.style.display = 'block';
+        link.style.marginTop = '15px';
+        link.innerHTML = '<i class="fa fa-compass"></i> Explore Today’s Trending';
+
+        popularContainer.appendChild(link);
     }
 
     // ==========================================================================
@@ -609,6 +826,159 @@
     }
 
     // ==========================================================================
+    // SAVED SEARCHES (PRESETS)
+    // ==========================================================================
+
+    function initSearchFlow() {
+        const form = document.querySelector('form.search');
+        const nav = document.querySelector('nav[role="navigation"]');
+
+        if (!form || !nav || form.dataset.savedInit) return;
+        form.dataset.savedInit = '1';
+
+        const input = form.querySelector('input[name="q"]');
+        if (input) input.style.paddingRight = '40px';
+
+        let searchData = JSON.parse(localStorage.getItem('nhentai_search_flow') || '{"saved":[]}');
+        let isDeleteMode = false;
+
+        const save = () => localStorage.setItem('nhentai_search_flow', JSON.stringify(searchData));
+
+        const toggleSavedItem = (query) => {
+            if (!query) return;
+            const idx = searchData.saved.indexOf(query);
+            if (idx > -1) searchData.saved.splice(idx, 1);
+            else searchData.saved.push(query);
+            save();
+
+            if (searchData.saved.length === 0) isDeleteMode = false;
+
+            renderBar();
+        };
+
+        const trigger = document.createElement('div');
+        trigger.className = 'search-saved-trigger';
+        trigger.innerHTML = '<i class="fa fa-bookmark"></i>';
+        trigger.title = "Toggle Saved Searches Panel";
+        form.appendChild(trigger);
+
+        const barContainer = document.createElement('div');
+        barContainer.className = 'saved-search-extension';
+        nav.parentNode.insertBefore(barContainer, nav.nextSibling);
+
+        const renderBar = () => {
+            const currentQ = input ? input.value.trim() : '';
+            const isCurrentSaved = currentQ && searchData.saved.includes(currentQ);
+
+            const listClass = isDeleteMode ? 'sse-list delete-mode' : 'sse-list';
+            const editBtnText = isDeleteMode ? '<i class="fa fa-times"></i> Done' : '<i class="fas fa-eraser"></i> Delete';
+            const editBtnClass = isDeleteMode ? 'btn-sse-edit is-active' : 'btn-sse-edit';
+
+            let html = `
+                <div class="sse-header">
+                    <span class="sse-title"><i class="fa fa-tags"></i> Saved Searches</span>
+                        ${currentQ && !isCurrentSaved ?
+                            `<button class="btn-sse-save" id="btn-save-curr-bar"><i class="fa fa-plus"></i> Save Current</button>` : ''}
+
+                    <div class="sse-actions">
+                        ${searchData.saved.length > 0 ?
+                            `<button class="${editBtnClass}" id="btn-toggle-edit">${editBtnText}</button>` : ''}
+                    </div>
+                </div>
+                <div class="${listClass}">
+            `;
+
+            if (searchData.saved.length === 0) {
+                html += `<div class="sse-empty">No saved searches yet. Search for something and click "Save Current".</div>`;
+            } else {
+                searchData.saved.forEach(q => {
+                    const isCurrent = q === currentQ ? 'is-current' : '';
+                    const safeQ = q.replace(/"/g, '&quot;');
+
+                    html += `
+                        <div class="ss-pill ${isCurrent}">
+                            <div class="ss-part ss-add" data-q="${safeQ}" title="Add to current input">
+                                <i class="fa fa-plus" style="font-size: 10px;"></i>
+                            </div>
+                            <div class="ss-part ss-text" title="${isDeleteMode ? 'Click to DELETE' : 'Click to Search'}">
+                                ${q}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            html += `</div>`;
+
+            barContainer.innerHTML = html;
+
+            const btnEdit = barContainer.querySelector('#btn-toggle-edit');
+            if (btnEdit) {
+                btnEdit.onclick = (e) => {
+                    e.stopPropagation();
+                    isDeleteMode = !isDeleteMode;
+                    renderBar();
+                };
+            }
+
+            const btnSave = barContainer.querySelector('#btn-save-curr-bar');
+            if (btnSave) {
+                btnSave.onclick = (e) => {
+                    e.stopPropagation();
+                    toggleSavedItem(currentQ);
+                };
+            }
+
+            barContainer.querySelectorAll('.ss-text').forEach(el => {
+                const text = el.innerText.trim();
+                const fullQuery = searchData.saved.find(s => s.trim() === text) || text;
+
+                el.onclick = (e) => {
+                    e.stopPropagation();
+
+                    if (isDeleteMode) {
+                        toggleSavedItem(fullQuery);
+
+                    } else {
+                        input.value = fullQuery;
+                        form.submit();
+                    }
+                };
+            });
+
+            barContainer.querySelectorAll('.ss-add').forEach(el => {
+                el.onclick = (e) => {
+                    e.stopPropagation();
+                    if (isDeleteMode) return;
+
+                    const queryToAdd = el.dataset.q;
+                    const currentVal = input.value.trim();
+                    if (currentVal) {
+                        input.value = currentVal + ' ' + queryToAdd;
+                    } else {
+                        input.value = queryToAdd;
+                    }
+                    input.focus();
+                };
+            });
+        };
+
+        trigger.onclick = (e) => {
+            e.stopPropagation();
+            const isVisible = barContainer.classList.contains('is-visible');
+
+            if (!isVisible) {
+                isDeleteMode = false;
+                renderBar();
+                barContainer.classList.add('is-visible');
+                trigger.classList.add('is-active');
+            } else {
+                barContainer.classList.remove('is-visible');
+                trigger.classList.remove('is-active');
+            }
+        };
+    }
+
+    // ==========================================================================
     // GLOBAL SHORTCUTS
     // ==========================================================================
 
@@ -656,6 +1026,12 @@
         initGalleryPageFeatures();
         initGlobalShortcuts();
         initQueueWidget();
+        initRandomContextual();
+        initSearchFlow();
+
+        if (window.location.pathname === '/') {
+             initPopularShortcut();
+        }
     }
 
     document.addEventListener('keydown', (e) => {
