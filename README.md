@@ -62,7 +62,6 @@
 <hr>
 
 <center>
-<p align="center">Got questions or feedback? Drop a comment.
 <p align="center"><a href="https://discord.com/users/374316521960505354"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=white" alt="Discord"></a> <a href="https://www.codefactor.io/repository/github/testa-dor/nhentai-flow-userscript"><img src="https://www.codefactor.io/repository/github/testa-dor/nhentai-flow-userscript/badge" alt="CodeFactor" /></a>
 </p>
 <p align="center"><small style="color:#aaa;"><sup>Created by Testador · Refactored by Gemini. Licensed under the MIT License.</small></p>
