@@ -5,30 +5,33 @@
 <h2 style="background-color:#670000; border:outset;">&nbsp;Key Features</h2>
 
 <h3 style="color: #ed2553;">⚡ Instant Preview & Discovery</h3>
-<p>Browse content faster without opening dozens of tabs.</p>
+<p>Browse faster and find what you want without opening a million tabs.</p>
+
 <ul>
-    <li><strong>Hover Preview:</strong> Hover over any cover to instantly load pages. Use the integrated seek bar to jump through the book.</li>
-    <li><strong>Rich Tags:</strong> View a complete, color-coded list of tags (with tiers like <em>Uncommon/Rare</em>) directly in the preview.</li>
-    <li><b>Saved Searches (New):</b> Create and manage presets for your favorite tags or complex queries directly in the search bar.</li>
-    <li><b>Contextual Random (New):</b> Roll a random gallery specifically from your current search results instead of the entire site.</li>
-    <li><strong>Multi-Tag Selector:</strong> Activate "Tag Select" mode to click multiple tags and generate complex search queries instantly.</li>
-    <li><strong>Smart Scroll:</strong> Automatically loads the next page when you scroll to the bottom.</li>
+    <li><b>Hover Preview:</b> Hover over any cover to instantly load its pages. Use the built-in seek bar to jump around.</li>
+    <li><b>Rich Tags:</b> See the full tag list right in the preview, with color-coded tiers like <em>Uncommon</em> and <em>Rare</em>.</li>
+    <li><b>Saved Searches (New):</b> Save your favorite tag combos or complex searches directly from the search bar.</li>
+    <li><b>Contextual Random (New):</b> Roll a random gallery from your current results, not from the entire site.</li>
+    <li><b>Multi-Tag Selector:</b> Enable “Tag Select” mode to click multiple tags and instantly build advanced searches.</li>
+    <li><b>Smart Scroll:</b> Automatically loads the next page when you scroll to the bottom.</li>
 </ul>
 
 <h3 style="color: #ed2553;">📚 Built-in Reading Queue</h3>
-<p>Never lose track of what to read next. Manage your own reading list directly within the browser.</p>
+<p>Keep track of what you want to read.</p>
+
 <ul>
-    <li><b>One-Click Add:</b> Click the <b style="background-color: #222222; color: #ed2553; border: 1px solid #ed2553;">+ Queue</b> button on any gallery cover or page.</li>
-    <li><b>Auto-Save:</b> Your list is saved locally and persists even after closing the browser.</li>
-    <li><b>Dock Widget:</b> A minimized floating dock in the bottom-right corner keeps your list accessible.</li>
+    <li><b>One-Click Add:</b> Add any gallery to your queue using the <code>+ Queue</code> button on covers or gallery pages.</li>
+    <li><b>Auto-Save:</b> Your queue is stored locally and stays there even after closing the browser.</li>
+    <li><b>Dock Widget:</b> A small floating dock in the bottom-right corner keeps your list always accessible.</li>
 </ul>
 
 <h3 style="color: #ed2553;">📖 Immersive Reader</h3>
-<p>A focused environment designed for immersion and utility.</p>
+<p>A clean reading mode focused on comfort and speed.</p>
+
 <ul>
-    <li><b>Immersive Mode:</b> A fullscreen toggle (Hotkey: T) that hides the browser UI for maximum view area.</li>
-    <li><b>Random Favorite (New):</b> A new button in the reader toolbar to instantly open a random gallery from your favorites.</li>
-    <li><b>Seamless Navigation (New):</b> When reading, a "Next in Queue" button appears to jump instantly to the next book.</li>
+    <li><b>Immersive Mode:</b> Press <code>T</code> to toggle fullscreen reading and hide browser UI.</li>
+    <li><b>Random Favorite (New):</b> Instantly open a random gallery from your favorites using the reader toolbar.</li>
+    <li><b>Seamless Navigation (New):</b> A <b>Next in Queue</b> button appears while reading, letting you jump straight to the next book.</li>
 </ul>
 
 <h2 style="background-color:#670000; border:outset;">&nbsp;Shortcuts & Controls</h2>
