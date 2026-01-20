@@ -10,8 +10,8 @@
 <ul>
     <li><b>Hover Preview:</b> Hover over any cover to instantly load its pages. Use the built-in seek bar to jump around.</li>
     <li><b>Rich Tags:</b> See the full tag list right in the preview, with color-coded tiers like <em>Uncommon</em> and <em>Rare</em>.</li>
-    <li><b>Saved Searches (New):</b> Save your favorite tag combos or complex searches directly from the search bar.</li>
-    <li><b>Contextual Random (New):</b> Roll a random gallery from your current results, not from the entire site.</li>
+    <li><b>Saved Searches:</b> Save your favorite tag combos or complex searches directly from the search bar.</li>
+    <li><b>Contextual Random:</b> Roll a random gallery from your current results, not from the entire site.</li>
     <li><b>Multi-Tag Selector:</b> Enable “Tag Select” mode to click multiple tags and instantly build advanced searches.</li>
     <li><b>Smart Scroll:</b> Automatically loads the next page when you scroll to the bottom.</li>
 </ul>
@@ -20,6 +20,7 @@
 <p>Keep track of what you want to read.</p>
 
 <ul>
+    <li><b>Dedicated Queue Page (New):</b> View your entire reading list in one place, with pagination, sorting (Newest / Oldest), and shuffle mode.</li>
     <li><b>One-Click Add:</b> Add any gallery to your queue using the <code>+ Queue</code> button on covers or gallery pages.</li>
     <li><b>Auto-Save:</b> Your queue is stored locally and stays there even after closing the browser.</li>
     <li><b>Dock Widget:</b> A small floating dock in the bottom-right corner keeps your list always accessible.</li>
@@ -30,8 +31,8 @@
 
 <ul>
     <li><b>Immersive Mode:</b> Press <code>T</code> to toggle fullscreen reading and hide browser UI.</li>
-    <li><b>Random Favorite (New):</b> Instantly open a random gallery from your favorites using the reader toolbar.</li>
-    <li><b>Seamless Navigation (New):</b> A <b>Next in Queue</b> button appears while reading, letting you jump straight to the next book.</li>
+    <li><b>Random Favorite:</b> Instantly open a random gallery from your favorites using the reader toolbar.</li>
+    <li><b>Seamless Navigation:</b> A <b>Next in Queue</b> button appears while reading, letting you jump straight to the next book.</li>
 </ul>
 
 <h2 style="background-color:#670000; border:outset;">&nbsp;Shortcuts & Controls</h2>
