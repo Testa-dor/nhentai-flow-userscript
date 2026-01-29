@@ -1,10 +1,3 @@
-<div style="border: 1px solid #666666; background-color: #252525;">
-    <center>
-        <p><b>Check out my other script:</b>
-            <br><a href="/scripts/543652" style="color: #006FFA;"><b>Gelbooru Suite</b></a> for a better experience in Gelbooru.
-        </p>
-    </center>
-</div>
 <h2 style="background-color:#ed2553; border:outset;">&nbsp;Key Features</h2>
 
 <video src="https://files.catbox.moe/6aap2s.mp4" width="100%" controls></video>
