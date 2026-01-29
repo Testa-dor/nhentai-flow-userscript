@@ -111,7 +111,7 @@
         /* --- TAGS & QUEUE TRIGGERS --- */
         .tag-trigger, .queue-trigger { width: 20%; position: absolute; background: rgba(31,31,31,0.6); color: #fff; font-size: 10px; font-weight: 700; padding: 4px 0px; }
         .tag-trigger { transition: width 0.2s ease, background 0.2s ease; border-radius: .3em 0 .3em 0; z-index: 80; cursor: default; }
-        .tag-trigger:hover, .inline-preview-ui:has(.tag-popup:hover) .tag-trigger { width: 100%; background: #404040; border-radius: .3em .3em 0 0; }
+        .tag-trigger:hover, .inline-preview-ui:has(.tag-popup:hover) .tag-trigger { width: 80%; background: #404040; }
         .queue-trigger { right: 0; border-radius: 0 .3em 0 .3em; z-index: 50; cursor: pointer; }
         .queue-trigger:hover { background: #404040; }
         .queue-trigger.in-queue { background: #ed2553; }
