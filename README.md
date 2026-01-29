@@ -1,41 +1,47 @@
-<p align="center"><b>Check out my other script:</b>
-<br><a href="https://github.com/Testa-dor/gelbooru-suite-userscript" style="color: #ed2553;"><b>Gelbooru Suite</b></a> for a better experience in Gelbooru
-</p>
-<hr>
-<h2 style="background-color:#670000; border:outset;">&nbsp;Key Features</h2>
+<div style="border: 1px solid #666666; background-color: #252525;">
+    <center>
+        <p><b>Check out my other script:</b>
+            <br><a href="/scripts/543652" style="color: #006FFA;"><b>Gelbooru Suite</b></a> for a better experience in Gelbooru.
+        </p>
+    </center>
+</div>
+<h2 style="background-color:#ed2553; border:outset;">&nbsp;Key Features</h2>
+
+<video src="https://files.catbox.moe/6aap2s.mp4" width="100%" controls></video>
 
 <h3 style="color: #ed2553;">⚡ Instant Preview & Discovery</h3>
-<p>Browse faster and find what you want without opening a million tabs.</p>
+<p>Browse faster without opening dozens of tabs.</p>
 
 <ul>
-    <li><b>Hover Preview:</b> Hover over any cover to instantly load its pages. Use the built-in seek bar to jump around.</li>
-    <li><b>Rich Tags:</b> See the full tag list right in the preview, with color-coded tiers like <em>Uncommon</em> and <em>Rare</em>.</li>
-    <li><b>Saved Searches:</b> Save your favorite tag combos or complex searches directly from the search bar.</li>
-    <li><b>Contextual Random:</b> Roll a random gallery from your current results, not from the entire site.</li>
-    <li><b>Multi-Tag Selector:</b> Enable “Tag Select” mode to click multiple tags and instantly build advanced searches.</li>
-    <li><b>Smart Scroll:</b> Automatically loads the next page when you scroll to the bottom.</li>
+    <li><b>Hover Preview:</b> Instantly preview galleries by hovering covers.</li>
+    <li><b>Rich Tags:</b> View full tag lists right in the preview with color-coded tiers.</li>
+    <li><b>Saved Searches:</b> Save and reuse complex searches.</li>
+    <li><b>Contextual Random:</b> Random gallery based on current search.</li>
+    <li><b>Multi-Tag Selector:</b> Build advanced searches with multiple tags.</li>
+    <li><b>Smart Scroll:</b> Auto-load the next page while scrolling.</li>
+    <li><b>Context Menu (New):</b> Right-click any thumb gallery for quick actions.</li>
 </ul>
 
 <h3 style="color: #ed2553;">📚 Built-in Reading Queue</h3>
-<p>Keep track of what you want to read.</p>
+<p>Save galleries and read them later.</p>
 
 <ul>
-    <li><b>Dedicated Queue Page (New):</b> View your entire reading list in one place, with pagination, sorting (Newest / Oldest), and shuffle mode.</li>
-    <li><b>One-Click Add:</b> Add any gallery to your queue using the <code>+ Queue</code> button on covers or gallery pages.</li>
-    <li><b>Auto-Save:</b> Your queue is stored locally and stays there even after closing the browser.</li>
-    <li><b>Dock Widget:</b> A small floating dock in the bottom-right corner keeps your list always accessible.</li>
+    <li><b>Dedicated Queue Page:</b> Pagination, sorting (Newest / Oldest), and shuffle.</li>
+    <li><b>Discover & Fill (New):</b> Auto-discover new galleries based on your favorites.</li>
+    <li><b>One-Click Add:</b> Add galleries instantly from covers or pages.</li>
+    <li><b>Dock Widget:</b> Floating mini dock for quick access.</li>
 </ul>
 
 <h3 style="color: #ed2553;">📖 Immersive Reader</h3>
-<p>A clean reading mode focused on comfort and speed.</p>
+<p>Fast and distraction-free reading mode.</p>
 
 <ul>
-    <li><b>Immersive Mode:</b> Press <code>T</code> to toggle fullscreen reading and hide browser UI.</li>
-    <li><b>Random Favorite:</b> Instantly open a random gallery from your favorites using the reader toolbar.</li>
-    <li><b>Seamless Navigation:</b> A <b>Next in Queue</b> button appears while reading, letting you jump straight to the next book.</li>
+    <li><b>Reader Toolbar:</b> Fullscreen, random favorite, and next-in-queue controls.</li>
+    <li><b>Click Navigation:</b> Click the screen edges to change pages.</li>
+    <li><b>Mouse Wheel Support (New):</b> Change pages using the scroll wheel in fullscreen.</li>
 </ul>
 
-<h2 style="background-color:#670000; border:outset;">&nbsp;Shortcuts & Controls</h2>
+<h2 style="background-color:#ed2553; border:outset;">&nbsp;Shortcuts & Controls</h2>
 
 <table style="border: 1px solid #333333; color: #dddddd; width: 100%;">
     <thead>
@@ -47,22 +53,23 @@
     <tbody>
         <tr>
             <td style="border: 1px solid #333333;"><code>Q</code></td>
-            <td style="border: 1px solid #333333;">Add/Remove the hovered gallery from the <strong>Queue</strong></td>
+            <td style="border: 1px solid #333333;">Add/Remove the hovered gallery from the <b>Queue</b></td>
         </tr>
         <tr>
             <td style="border: 1px solid #333333;"><code>/</code></td>
-            <td style="border: 1px solid #333333;">Instantly focus the <strong>Search Bar</strong></td>
+            <td style="border: 1px solid #333333;">Instantly focus the <b>Search Bar</b></td>
         </tr>
         <tr>
             <td style="border: 1px solid #333333;"><code>T</code></td>
-            <td style="border: 1px solid #333333;">Toggle <strong>Fullscreen</strong> (in Reader)</td>
+            <td style="border: 1px solid #333333;">Toggle <b>Fullscreen</b> (in Reader)</td>
         </tr>
         <tr>
             <td style="border: 1px solid #333333;"><code>Arrow Keys</code></td>
-            <td style="border: 1px solid #333333;">Navigate preview pages (Left/Right)</td>
+            <td style="border: 1px solid #333333;">Navigate preview pages (Left / Right)</td>
         </tr>
     </tbody>
 </table>
+
 <hr>
 
 <center>
