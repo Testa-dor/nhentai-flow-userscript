@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NHentai Flow
 // @namespace    NEnhanced
-// @version      1.4
+// @version      1.4.2
 // @description  Quality-of-life features including instant preview, reading queue, tag tools, smart navigation, reader enhancements and more.
 // @author       Testador
 // @match        https://nhentai.net/*
@@ -1374,6 +1374,20 @@
         let isNavigating = false;
         let isTicking = false;
 
+        const resetState = () => {
+            isNavigating = false;
+            isTicking = false;
+            accumulatedDelta = 0;
+            pendingDelta = 0;
+            navBar.style.width = '0%';
+            navBar.style.background = '#ed2553';
+            navBar.style.boxShadow = 'none';
+        };
+
+        window.addEventListener('pageshow', () => {
+            resetState();
+        });
+
         const updateVisuals = () => {
             if (isNavigating) return;
 
@@ -1392,18 +1406,21 @@
 
             if (isAtBottom && delta > 0) {
                 accumulatedDelta += delta;
-
                 const percent = Math.min(100, (accumulatedDelta / SMART_NAV_THRESHOLD) * 100);
                 navBar.style.width = `${percent}%`;
 
                 if (accumulatedDelta > SMART_NAV_THRESHOLD) {
                     isNavigating = true;
+
                     navBar.style.background = "#fff";
                     navBar.style.boxShadow = "0 0 15px #fff";
 
-                    if (navigator.vibrate) navigator.vibrate(100);
-
                     window.location.href = nextLink.href;
+
+                    setTimeout(() => {
+                        resetState();
+                    }, 3000);
+
                     return;
                 }
             } else {
@@ -1419,36 +1436,29 @@
 
         const requestUpdate = (amount) => {
             pendingDelta += amount;
-
             if (!isTicking) {
                 isTicking = true;
                 window.requestAnimationFrame(updateVisuals);
             }
         };
 
-        // 1. Desktop (Wheel)
         window.addEventListener('wheel', (e) => {
             if (isNavigating) return;
             requestUpdate(e.deltaY);
         }, { passive: true });
 
-        // 2. Mobile (Touch)
         let touchStartY = 0;
-
         window.addEventListener('touchstart', (e) => {
             touchStartY = e.touches[0].clientY;
         }, { passive: true });
 
         window.addEventListener('touchmove', (e) => {
             if (isNavigating) return;
-
             const touchCurrentY = e.touches[0].clientY;
             const diff = touchStartY - touchCurrentY;
             touchStartY = touchCurrentY;
-
             const multiplier = settings.smartNavSensitivity || 1.5;
             requestUpdate(diff * multiplier);
-
         }, { passive: true });
 
         window.addEventListener('touchend', () => {
