@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NHentai Flow
 // @namespace    NEnhanced
-// @version      1.4.2
+// @version      1.4.3
 // @description  Quality-of-life features including instant preview, reading queue, tag tools, smart navigation, reader enhancements and more.
 // @author       Testador
 // @match        https://nhentai.net/*
@@ -213,7 +213,8 @@
         .sse-list.reorder-mode .ss-pill { cursor: grab; }
         .sse-list.reorder-mode .ss-pill:active, .sse-list.reorder-mode .ss-separator:active { cursor: grabbing; }
         .sse-list.reorder-mode .ss-text { pointer-events: none; }
-        .ss-pill.is-dragging, .ss-separator.is-dragging { opacity: 0.4; transform: scale(0.90); }
+        .ss-pill.is-dragging, .ss-separator.is-dragging { opacity: 0.4; transform: scale(0.90); transition: transform 0.2s; }
+        .ss-pill.is-pressing, .ss-separator.is-pressing { transform: scale(0.95); transition: transform 0.2s; opacity: 0.8; }
         .ss-pill.drag-over { border-left: 12px solid #ed2553; transition: all 0.1s; }
         .ss-separator { flex-basis: 100%; height: 2px; background: #2e2e2e; margin: 4px 0; position: relative; }
         .sse-list.reorder-mode .ss-separator { cursor: grab; height: 12px; background: transparent; border: 1px dashed #555; }
@@ -1623,6 +1624,10 @@
         nav.parentNode.insertBefore(barContainer, nav.nextSibling);
 
         const renderBar = () => {
+            let prevScroll = 0;
+            const existingList = barContainer.querySelector('.sse-list');
+            if (existingList) prevScroll = existingList.scrollTop;
+
             const currentQ = input ? input.value.trim() : '';
             const isCurrentSaved = currentQ && searchData.saved.includes(currentQ);
 
@@ -1696,7 +1701,6 @@
                         const displayLabel = q.replace(/\b[a-z-]+:/g, '').trim();
 
                         let tooltip = safeQ;
-
                         const draggableAttr = isReorderMode ? 'draggable="true"' : '';
 
                         html += `
@@ -1712,7 +1716,10 @@
 
             barContainer.innerHTML = html;
 
-            // DRAG AND DROP (Desktop + Mobile)
+            const newList = barContainer.querySelector('.sse-list');
+            if (newList) newList.scrollTop = prevScroll;
+
+
             if (isReorderMode) {
                 let draggedIndex = null;
                 const items = barContainer.querySelectorAll('.sse-item');
@@ -1761,24 +1768,66 @@
                 // 1.2 MOBILE
                 let touchSourceIndex = null;
                 let touchTargetElement = null;
+                let longPressTimer = null;
+                let isDragActive = false;
+                let autoScrollInterval = null;
+                let lastTouchY = 0;
+
+                const listElement = barContainer.querySelector('.sse-list');
+
+                const handleAutoScroll = () => {
+                    if (!isDragActive || !listElement) return;
+
+                    const rect = listElement.getBoundingClientRect();
+                    const threshold = 50;
+                    const speed = 10;
+
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = null;
+
+                    if (lastTouchY < rect.top + threshold) {
+                        autoScrollInterval = setInterval(() => { listElement.scrollTop -= speed; }, 16);
+                    } else if (lastTouchY > rect.bottom - threshold) {
+                        autoScrollInterval = setInterval(() => { listElement.scrollTop += speed; }, 16);
+                    }
+                };
+
+                const stopAutoScroll = () => {
+                    if (autoScrollInterval) { clearInterval(autoScrollInterval); autoScrollInterval = null; }
+                };
 
                 items.forEach(item => {
                     item.addEventListener('touchstart', (e) => {
                         touchSourceIndex = parseInt(item.dataset.index);
-                        item.classList.add('is-dragging');
+                        item.classList.add('is-pressing');
+
+                        longPressTimer = setTimeout(() => {
+                            isDragActive = true;
+                            item.classList.remove('is-pressing');
+                            item.classList.add('is-dragging');
+                            if (navigator.vibrate) navigator.vibrate(50);
+                            document.body.style.overflow = 'hidden';
+                        }, 500);
+
                     }, { passive: true });
 
                     item.addEventListener('touchmove', (e) => {
-                        if (touchSourceIndex === null) return;
-                        e.preventDefault();
-
                         const touch = e.touches[0];
-                        const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+                        lastTouchY = touch.clientY;
 
+                        if (!isDragActive) {
+                            clearTimeout(longPressTimer);
+                            item.classList.remove('is-pressing');
+                            return;
+                        }
+
+                        e.preventDefault();
+                        handleAutoScroll();
+
+                        const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
                         if (!elementBelow) return;
 
                         const targetItem = elementBelow.closest('.sse-item');
-
                         items.forEach(i => i.classList.remove('drag-over'));
 
                         if (targetItem && targetItem !== item) {
@@ -1790,20 +1839,39 @@
                     }, { passive: false });
 
                     item.addEventListener('touchend', (e) => {
-                        item.classList.remove('is-dragging');
-                        items.forEach(i => i.classList.remove('drag-over'));
+                        clearTimeout(longPressTimer);
+                        stopAutoScroll();
 
-                        if (touchSourceIndex !== null && touchTargetElement) {
-                            const targetIndex = parseInt(touchTargetElement.dataset.index);
-                            if (targetIndex !== touchSourceIndex) {
-                                const itemToMove = searchData.saved.splice(touchSourceIndex, 1)[0];
-                                searchData.saved.splice(targetIndex, 0, itemToMove);
-                                saveSearch();
-                                renderBar();
+                        item.classList.remove('is-pressing');
+                        item.classList.remove('is-dragging');
+                        document.body.style.overflow = '';
+
+                        if (isDragActive) {
+                            items.forEach(i => i.classList.remove('drag-over'));
+
+                            if (touchSourceIndex !== null && touchTargetElement) {
+                                const targetIndex = parseInt(touchTargetElement.dataset.index);
+                                if (targetIndex !== touchSourceIndex) {
+                                    const itemToMove = searchData.saved.splice(touchSourceIndex, 1)[0];
+                                    searchData.saved.splice(targetIndex, 0, itemToMove);
+                                    saveSearch();
+                                    renderBar();
+                                }
                             }
                         }
+
+                        isDragActive = false;
                         touchSourceIndex = null;
                         touchTargetElement = null;
+                    });
+
+                    item.addEventListener('touchcancel', () => {
+                        clearTimeout(longPressTimer);
+                        stopAutoScroll();
+                        isDragActive = false;
+                        item.classList.remove('is-pressing');
+                        item.classList.remove('is-dragging');
+                        document.body.style.overflow = '';
                     });
                 });
             }
