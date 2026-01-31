@@ -1,38 +1,19 @@
 <h2 style="background-color:#ed2553; border:outset;">&nbsp;Key Features</h2>
 
-<video src="https://files.catbox.moe/6aap2s.mp4" width="100%" controls></video>
-
 <h3 style="color: #ed2553;">⚡ Instant Preview & Discovery</h3>
-<p>Browse faster without opening dozens of tabs.</p>
+<p> Browse faster without opening dozens of tabs. Preview galleries by hovering covers and view full tag lists with color-coded tiers.</p>
+Save complex searches, roll contextual random results, build multi-tag queries, auto-load pages while scrolling, and use a right-click context menu for quick actions.
 
-<ul>
-    <li><b>Hover Preview:</b> Instantly preview galleries by hovering covers.</li>
-    <li><b>Rich Tags:</b> View full tag lists right in the preview with color-coded tiers.</li>
-    <li><b>Saved Searches:</b> Save and reuse complex searches.</li>
-    <li><b>Contextual Random:</b> Random gallery based on current search.</li>
-    <li><b>Multi-Tag Selector:</b> Build advanced searches with multiple tags.</li>
-    <li><b>Smart Scroll:</b> Auto-load the next page while scrolling.</li>
-    <li><b>Context Menu (New):</b> Right-click any thumb gallery for quick actions.</li>
-</ul>
 
 <h3 style="color: #ed2553;">📚 Built-in Reading Queue</h3>
-<p>Save galleries and read them later.</p>
+<p>Save galleries to read later in a dedicated queue page with pagination, sorting (Newest / Oldest), and shuffle.</p>
+Add items in one click from covers or pages, discover new galleries automatically with Discover & Fill, and access your list anytime through a floating mini dock.
 
-<ul>
-    <li><b>Dedicated Queue Page:</b> Pagination, sorting (Newest / Oldest), and shuffle.</li>
-    <li><b>Discover & Fill (New):</b> Auto-discover new galleries based on your favorites.</li>
-    <li><b>One-Click Add:</b> Add galleries instantly from covers or pages.</li>
-    <li><b>Dock Widget:</b> Floating mini dock for quick access.</li>
-</ul>
 
 <h3 style="color: #ed2553;">📖 Immersive Reader</h3>
-<p>Fast and distraction-free reading mode.</p>
+<p>A useful reading mode with all controls in a bottom toolbar, including fullscreen, random favorite, and next-in-queue navigation.</p>
+Change pages by clicking the screen edges, or use the mouse wheel in fullscreen.
 
-<ul>
-    <li><b>Reader Toolbar:</b> Fullscreen, random favorite, and next-in-queue controls.</li>
-    <li><b>Click Navigation:</b> Click the screen edges to change pages.</li>
-    <li><b>Mouse Wheel Support (New):</b> Change pages using the scroll wheel in fullscreen.</li>
-</ul>
 
 <h2 style="background-color:#ed2553; border:outset;">&nbsp;Shortcuts & Controls</h2>
 
